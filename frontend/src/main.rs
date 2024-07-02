@@ -3,11 +3,11 @@ mod error;
 mod pages;
 
 pub use error::{Error, Result};
+pub use pages::App;
 
 use leptos::{mount_to_body, view};
-use pages::App;
 
-fn main() {
+pub fn main() {
     // debug WASM
     console_error_panic_hook::set_once();
 
