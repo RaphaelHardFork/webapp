@@ -1,0 +1,17 @@
+[package]
+name = "frontend"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# -- UI
+leptos = { version = "0.6.12", features = ["csr"] }
+leptos_router = { version = "0.6.12", features = ["csr"] }
+# -- WASM
+console_error_panic_hook = "0.1.7"
+# -- Utils
+derive_more = { version = "0.99.17", features = ["from"] }
+
+[lints]
+workspace = true

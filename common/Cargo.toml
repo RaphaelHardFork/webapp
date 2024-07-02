@@ -1,0 +1,11 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# -- Serialize
+serde = { version = "1.0.200", features = ["derive"] }
+
+[lints]
+workspace = true
