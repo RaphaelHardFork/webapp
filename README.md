@@ -11,7 +11,7 @@ cargo install trunk
 ## Usage
 
 ```bash
-trunk serve frontend/index.html
+trunk serve client/index.html
 ```
 
 ## Tests
@@ -23,7 +23,7 @@ cargo test
 
 End-to-end testing (with DOM interaction) is tested with `wasm-bindgen` & `wasm-pack`:
 ```bash
-wasm-pack test --chrome frontend/
+wasm-pack test --chrome client/
 ```
 *[Installing wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)*
 

@@ -4,4 +4,4 @@ unused = "allow"       # For exploratory dev.
 
 [workspace]
 resolver = "2"
-members = [ "common","frontend"]
+members = ["common", "client"]

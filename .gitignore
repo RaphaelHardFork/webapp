@@ -11,5 +11,8 @@ target/
 !Cargo.lock # commented by default (non-prod dev)
 !.cargo/
 
+# -- Node.js
+node_modules/
+
 # -- App
 dist/

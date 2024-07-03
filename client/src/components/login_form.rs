@@ -18,6 +18,7 @@ pub fn LoginForm() -> impl IntoView {
             <form>
                 <div>
                     <input
+                        class="bg-amber"
                         type="email"
                         placeholder="Email"
                         id="email-input"
