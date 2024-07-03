@@ -1,6 +1,5 @@
 use crate::Error;
 use leptos::{component, view, IntoView, ReadSignal, SignalGet};
-use std::fmt::format;
 
 #[component]
 pub fn ErrorAlert(error: ReadSignal<Option<Error>>) -> impl IntoView {

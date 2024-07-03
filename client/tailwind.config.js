@@ -8,3 +8,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+// Docs & references: https://tailwindcss.com/docs/theme

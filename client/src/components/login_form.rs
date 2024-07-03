@@ -1,10 +1,7 @@
 use crate::components::ErrorAlert;
 use crate::Error;
-use leptos::{
-    component, create_effect, create_signal, event_target_value, logging::log, view, IntoView,
-    ReadSignal, SignalGet, SignalGetUntracked, SignalSet, SignalUpdate,
-};
-use leptos_router::{Form, A};
+use leptos::{component, create_signal, event_target_value, view, IntoView, SignalGet, SignalSet};
+use leptos_router::Form;
 
 #[component]
 pub fn LoginForm() -> impl IntoView {
@@ -55,7 +52,7 @@ pub fn LoginForm() -> impl IntoView {
 
                     // send info to SQLite
                     on:click=move |_| { set_error.set(Some(Error::Unauthorized)) }
-                    disabled=(move || email.get().is_empty() || pwd.get().is_empty())
+                    disabled=move || email.get().is_empty() || pwd.get().is_empty()
                 >
                     Sign in
                 </button>

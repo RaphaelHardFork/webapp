@@ -17,14 +17,16 @@ trunk serve
 
 ## Tests
 
-Components logic is tested by reproducing the logic into an unit test: 
+Components logic is tested by reproducing the logic into an unit test:  
+
 ```bash
 cargo test
 ```
 
 End-to-end testing (with DOM interaction) is tested with `wasm-bindgen` & `wasm-pack`:
+
 ```bash
 wasm-pack test --chrome client/
 ```
-*[Installing wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)*
 
+*[Installing wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)*
