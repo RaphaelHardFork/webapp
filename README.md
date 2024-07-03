@@ -11,7 +11,8 @@ cargo install trunk
 ## Usage
 
 ```bash
-trunk serve client/index.html
+cd client/
+trunk serve
 ```
 
 ## Tests

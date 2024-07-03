@@ -1,10 +1,10 @@
 use crate::components::ErrorAlert;
 use crate::Error;
-
 use leptos::{
-    component, create_signal, event_target_value, view, IntoView, ReadSignal, SignalGet,
-    SignalGetUntracked, SignalSet,
+    component, create_effect, create_signal, event_target_value, logging::log, view, IntoView,
+    ReadSignal, SignalGet, SignalGetUntracked, SignalSet, SignalUpdate,
 };
+use leptos_router::{Form, A};
 
 #[component]
 pub fn LoginForm() -> impl IntoView {
@@ -13,34 +13,54 @@ pub fn LoginForm() -> impl IntoView {
     let (pwd, set_pwd) = create_signal::<String>(String::new());
 
     view! {
-        <div>
-            <ErrorAlert error=(move || error.get())()/>
-            <form>
-                <div>
+        <div class="font-serif mx-auto bg-gray-300 rounded-md shadow-md w-2/4 p-3">
+            <ErrorAlert error=error/>
+            <Form action="" class="flex flex-col">
+                <div class="flex flex-col mb-3">
+                    <label class="mb-2" for="email-input">
+                        Email:
+                    </label>
                     <input
-                        class="bg-amber"
+                        class="bg-white rounded-md h-8 p-2"
                         type="email"
-                        placeholder="Email"
+                        placeholder="e@mail.com"
                         id="email-input"
                         value=(move || email.get())()
                         on:input=move |ev| { set_email.set(event_target_value(&ev)) }
                         prop:value=email
                     />
                 </div>
-                <div>
+                <div class="flex flex-col mb-3">
+                    <label class="mb-2" for="pwd-input">
+                        Password:
+                    </label>
                     <input
+                        class="bg-white rounded-md h-8 p-2"
                         type="password"
-                        placeholder="Password"
+                        placeholder="*************"
                         id="pwd-input"
                         value=(move || pwd.get())()
                         on:input=move |ev| { set_pwd.set(event_target_value(&ev)) }
                         prop:value=pwd
                     />
                 </div>
-                <button type="submit" disabled=false>
+                <button
+                    class=move || {
+                        if !email.get().is_empty() && !pwd.get().is_empty() {
+                            "mt-5 rounded-md h-8 bg-lime-300 hover:bg-lime-100"
+                        } else {
+                            "mt-5 rounded-md h-8 bg-gray-100"
+                        }
+                    }
+
+                    // send info to SQLite
+                    on:click=move |_| { set_error.set(Some(Error::Unauthorized)) }
+                    disabled=(move || email.get().is_empty() || pwd.get().is_empty())
+                >
                     Sign in
                 </button>
-            </form>
+            </Form>
+
         </div>
     }
 }

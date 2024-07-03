@@ -1,21 +1,12 @@
-use leptos::{component, view, IntoView};
-
 use crate::components::LoginForm;
+use leptos::{component, view, IntoView};
 
 #[component]
 pub fn Login() -> impl IntoView {
     view! {
-        <div>
-            <div>
-                <div>
-                    <h1 class="text-4xl">My awesome intranet</h1>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <LoginForm/>
-                </div>
-            </div>
-        </div>
+        <main class="bg-gradient-to-tr from-blue-100 to-blue-50 min-h-screen p-7">
+            <h1 class="text-4xl text-center font-serif my-5">My awesome intranet</h1>
+            <LoginForm/>
+        </main>
     }
 }
