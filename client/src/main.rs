@@ -1,8 +1,9 @@
 mod components;
 mod error;
 mod pages;
+mod utils;
 
-pub use error::{Error, Result};
+pub use error::{AppError, AppResult};
 pub use pages::App;
 
 use leptos::{mount_to_body, view};

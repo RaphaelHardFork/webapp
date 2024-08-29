@@ -4,4 +4,4 @@ unsafe_code = "forbid"
 
 [workspace]
 resolver = "2"
-members = ["common", "client"]
+members = ["client"]

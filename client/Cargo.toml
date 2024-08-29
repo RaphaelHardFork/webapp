@@ -13,6 +13,7 @@ leptos_router = { version = "0.6.12", features = ["csr"] }
 console_error_panic_hook = "0.1.7"
 # -- Utils
 derive_more = { version = "0.99.17", features = ["from"] }
+lazy-regex = "3.2.0"
 
 
 [lints]

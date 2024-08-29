@@ -1,13 +1,15 @@
-use crate::components::ErrorAlert;
-use crate::Error;
+use crate::AppError;
+use crate::{components::ErrorAlert, utils::validate_email};
 use leptos::{component, create_signal, event_target_value, view, IntoView, SignalGet, SignalSet};
 use leptos_router::Form;
 
 #[component]
 pub fn LoginForm() -> impl IntoView {
-    let (error, set_error) = create_signal::<Option<Error>>(None);
+    let (error, set_error) = create_signal::<Option<AppError>>(None);
     let (email, set_email) = create_signal::<String>(String::new());
     let (pwd, set_pwd) = create_signal::<String>(String::new());
+
+    let valid_email = move || validate_email(&email.get());
 
     view! {
         <div class="font-serif mx-auto bg-gray-300 rounded-md shadow-md w-2/4 p-3">
@@ -18,7 +20,11 @@ pub fn LoginForm() -> impl IntoView {
                         Email:
                     </label>
                     <input
-                        class="bg-white rounded-md h-8 p-2"
+                        class=move || match valid_email() {
+                            true => "bg-white rounded-md h-8 p-2",
+                            false => "bg-white rounded-md h-8 p-2 border-2 border-red-400",
+                        }
+
                         type="email"
                         placeholder="e@mail.com"
                         id="email-input"
@@ -50,8 +56,7 @@ pub fn LoginForm() -> impl IntoView {
                         }
                     }
 
-                    // send info to SQLite
-                    on:click=move |_| { set_error.set(Some(Error::Unauthorized)) }
+                    on:click=move |_| { set_error.set(Some(AppError::Unauthorized)) }
                     disabled=move || email.get().is_empty() || pwd.get().is_empty()
                 >
                     Sign in
@@ -101,7 +106,7 @@ mod tests {
 
         assert_eq!(
             input.placeholder(),
-            "Email".to_string(),
+            "e@mail.com".to_string(),
             "email placeholder"
         );
 
@@ -121,12 +126,6 @@ mod tests {
 
         // clean the browser
         test_wrapper.remove();
-        Ok(())
-    }
-
-    #[test]
-    fn test_logic() -> Result<()> {
-        assert_eq!(1, 1, "Whow");
         Ok(())
     }
 }
