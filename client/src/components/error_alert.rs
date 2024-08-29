@@ -1,8 +1,8 @@
-use crate::Error;
+use crate::AppError;
 use leptos::{component, view, IntoView, ReadSignal, SignalGet};
 
 #[component]
-pub fn ErrorAlert(error: ReadSignal<Option<Error>>) -> impl IntoView {
+pub fn ErrorAlert(error: ReadSignal<Option<AppError>>) -> impl IntoView {
     move || {
         if let Some(error) = error.get() {
             let error = format!("Reason: {:?}", error);

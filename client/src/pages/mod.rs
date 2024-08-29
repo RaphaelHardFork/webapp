@@ -14,7 +14,8 @@ pub fn App() -> impl IntoView {
 
     view! {
         <Router>
-            <main class="bg-gradient-to-tr from-blue-100 to-blue-50 min-h-screen p-7">
+        //bg-gradient-to-tr from-blue-100 to-blue-50
+            <main class="background min-h-screen p-7">
                 <Routes>
                     <Route path="/" view=Login/>
                     <Route path="/error" view=Error/>

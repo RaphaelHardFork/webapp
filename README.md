@@ -1,24 +1,32 @@
-# Full-stack webapp
+# Frontend WASM webapp
+
+*WASM app served by Trunk and made with Leptos*
 
 ## Requirement
 
-`nightly` features of `leptos` are not used here.
+Install the WASM target:
+```bash
+rustup target add wasm32-unknown-unknown
+```
 
+Install Trunk:
 ```bash
 cargo install trunk
 ```
+
+*NOTE: `nightly` features of `leptos` are not used here.*
 
 ## Usage
 
 ```bash
 cd client/
-trunk serve
+trunk serve index.html
 ```
 
 ## Tests
+*Unit test are useful for testing pure logic inside components. (see [validate_email](./client/src/utils.rs#17))*  
 
-Components logic is tested by reproducing the logic into an unit test:  
-
+Unit tests:  
 ```bash
 cargo test
 ```
